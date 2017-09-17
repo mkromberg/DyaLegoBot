@@ -1,0 +1,3 @@
+﻿]load /home/pi/DyaLegoBot/*
+]load /home/pi/DyaLegoBot/Strategies/*
+Basic Drive ~ 1
