@@ -2,7 +2,7 @@
  ⍝ Drive in a Maze; always head for highest rightmost
  ⍝ angles    is a vector of angles at which distance was scanned
  ⍝ distances is a vector of scan distances corresponding to angles
- ⍝ return right power, left power, time to run
+ ⍝ return right power, left power, time to run.
 
  max←50                     ⍝ cap desired speed (0-100)
  mid←angles⍳⌊/|angles       ⍝ middle (=lowest angle)
@@ -35,4 +35,4 @@
      Log'Clearest path is ',(⍕|angle),' degrees off the ',bow,'.'
      Log'Action: Apply',(,⍕(⍕¨steer),¨'%',¨'L +' 'R'),'power to wheels for ',(⍕time),'s.'
  :EndIf
-⍝)(!Maze!pi!2017 9 17 16 59 25 0!0
+⍝)(!Maze!pi!2017 9 17 19 41 10 0!0

@@ -1,8 +1,8 @@
-﻿ action←OpenSpace(angles distances);bow;closest;dir;lowI;max;mid;steer;time;turn
+﻿ action←OpenSpace(angles distances);bow;closest;d;dir;lowI;max;mid;steer;time;turn
  ⍝ Basic, Conservative Driving
  ⍝ angles    is a vector of angles at which distance was scanned
  ⍝ distances is a vector of scan distances corresponding to angles
- ⍝ return right power, left power, time to run
+ ⍝ return right power, left power, time to run.
 
  max←50                     ⍝ cap desired speed (0-100)
  mid←angles⍳⌊/|angles       ⍝ middle (=lowest angle)
@@ -13,12 +13,15 @@
      ⎕←1 0⍕9⌊⌊DISTANCES÷10  ⍝ leading digit of all distances
  :EndIf
 
- :If (closest>35)∧(distances[⍸20≥|angles])∧.≥60 ⍝ all clear within +/- 20 degrees?
-     action←max max 3       ⍝ full speed ahead for a whole second
+ :If (closest>35)∧(d←distances[⍸20≥|angles])∧.≥60 ⍝ all clear within +/- 20 degrees?
+     action←max max 2       ⍝ full speed ahead for 2 seconds
      Log'All clear; full speed ahead!'
+ :ElseIf d∧.≤30
+     action←50 ¯50 2        ⍝ do a 180
+     Log'Panic! Turn around...'
  :Else
      turn←0⌈1-|angles[lowI]÷90  ⍝ How big a turn (90=1)?
-     :If (turn=0)∧0.1×closest<25 ⍝ edge away from wall
+     :If (turn=0)∧closest<25 ⍝ edge away from wall
          Log'Turning away from wall'
          turn←0.2
      :EndIf
@@ -33,4 +36,4 @@
          Log'Action: Apply',(,⍕(⍕¨steer),¨'%',¨'L +' 'R'),'power to wheels for ',(⍕time),'s.'
      :EndIf
  :EndIf
-⍝)(!OpenSpace!pi!2017 9 17 13 36 33 0!0
+⍝)(!OpenSpace!pi!2017 9 17 19 41 23 0!0
