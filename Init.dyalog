@@ -11,6 +11,7 @@
      Python←⎕NEW #.Py.Py('Version' 3)
      Python.Exec'import brickpi3'
      BP←Python.Eval'brickpi3.BrickPi3()'
-     Configure  ⍝ Set / Record BrickPi3 port configuration
  :EndIf
-⍝)(!Init!pi!2017 9 17 13 27 11 0!0
+
+ Configure  ⍝ Set / Record BrickPi3 port configuration
+⍝)(!Init!pi!2017 9 17 16 21 51 0!0

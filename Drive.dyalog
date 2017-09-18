@@ -10,11 +10,11 @@
  :Repeat
      RunScan 1          ⍝ Scan distances
      :If DEBUG
-         ⎕←¯10↓⍉⌽('*'@(↓10+⍉⌊0.5+1+(DISTANCES÷10)(×⍤1)1 2∘.○○ANGLES÷200))(21 21⍴' ')
+         ⎕←¯10↓⍉⌽(((DISTANCES<100)\'*')@(↓10+⍉⌊0.5+1+(DISTANCES÷10)(×⍤1)1 2∘.○○ANGLES÷200))(21 21⍴' ')
      :EndIf
      (left right delay)←strategy ANGLES DISTANCES
      Steer left right ⋄ ⎕DL delay ⋄ Steer 0 0
  :Until STOP∨endtest data
 
  Halt
-⍝)(!Drive!pi!2017 9 17 13 55 2 0!0
+⍝)(!Drive!pi!2017 9 17 16 7 10 0!0
